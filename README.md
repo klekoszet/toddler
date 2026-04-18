@@ -1,4 +1,3 @@
-```markdown
 # [EN] Toddler - Integrated Analytical System
 
 Toddler is a professional tool designed to automate the cleaning, weighting, and statistical analysis of quantitative research data. Built for researchers working with SPSS (`.sav`) and CSV files, the program combines the computational power of Python with the ability to generate ready-to-use Syntax for IBM SPSS Statistics.
