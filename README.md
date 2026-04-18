@@ -121,4 +121,3 @@ System jest w ciągłym rozwoju. Planowane usprawnienia obejmują:
 - **Obsługa Multi-Response:** Rozbudowa silnika statystycznego o zaawansowaną analizę pytań wielokrotnego wyboru (zestawy dychotomiczne).
 - **GUI (Graficzny Interfejs Użytkownika):** Przejście z interfejsu konsolowego (CLI) na dedykowane okno aplikacji typu desktop.
 - **Zaawansowany Trimming:** Dodanie opcji ręcznego sterowania progami Cap/Floor dla wag bezpośrednio z poziomu pliku konfiguracyjnego.
-```
