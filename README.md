@@ -1,123 +1,66 @@
-# [EN] Toddler - Integrated Analytical System
+# [EN] Toddler - Integrated Analytical System (v2.2)
 
-Toddler is a professional tool designed to automate the cleaning, weighting, and statistical analysis of quantitative research data. Built for researchers working with SPSS (`.sav`) and CSV files, the program combines the computational power of Python with the ability to generate ready-to-use Syntax for IBM SPSS Statistics.
+## 1. Project Goal
+An end-to-end desktop GUI application designed to automate the entire data processing workflow for quantitative research. Toddler seamlessly combines Data Cleaning (QC), Iterative Proportional Fitting (IPF Weighting), and Statistical Analysis into one cohesive tool. It works directly with SPSS (`.sav`) and CSV files, outputting ready-to-use analytical reports and SPSS Syntax.
 
-## 🚀 Core Features
+## 2. Vibe Coding & Development Approach
+This comprehensive system is the culmination of the "vibe coding" methodology. While AI handled the heavy lifting of generating the Tkinter graphical interface and pandas data manipulation boilerplate, I maintained strict control as the domain architect. I designed the statistical logic, defined the parameters for data exclusion, orchestrated the Raking algorithm limits, and mapped the export syntax. This project demonstrates how researchers can orchestrate AI models to build highly specialized, professional-grade analytical tools without writing every line of UI code manually.
 
-### 🛠 Data Preparation (Data Prep)
-**Cleaning:**
-- Removal of "speeders" (respondents with completion times below a specified threshold).
-- Detection of "straight-liners" (respondents showing abnormally low variance in scale questions).
-- Removal of "long-strings" (repetitive sequences of identical answers).
-- Multivariate anomaly detection using Mahalanobis Distance.
-- Handling of missing data (drops respondents missing >15% of scale items).
+## 3. Key Features
+- **Tabbed Graphical Interface (GUI):** A fully visual workspace replacing the old CLI. Features scrollable checkbox panels for easy handling of massive datasets with hundreds of variables.
+- **Customizable Data Prep (QC):** Dynamic thresholds for data cleaning. Users can manually set allowed missing data percentages, minimum variance for straight-liners, custom seconds for speeders, and max lengths for long-strings.
+- **Inline Weighting Editor:** An integrated IPF module that dynamically generates input fields for weighting targets based on the selected variables' unique categories. Automatically recodes continuous variables (e.g., exact age) into brackets based on user-defined ranges before weighting.
+- **Advanced Stat Engine:** Executes difference tests (ANOVA, t-tests), correlations, business metrics (NPS, T2B/B2B), creates indices with Cronbach's Alpha, and runs wave-to-wave tracking analyses.
+- **Smart Exporters:** Generates ready-to-run SPSS Syntax (`.sps`), detailed Excel tables (`.xlsx`), and automated PowerPoint presentations (`.pptx`) based strictly on the queued analyses.
 
-**Weighting:**
-- Advanced IPF (Iterative Proportional Fitting) Raking algorithm executed natively in Python.
-- Automatic trimming of extreme weights to prevent variance inflation.
-- Automatic recoding of continuous variables (e.g., exact age) into brackets based on target weighting structures.
+## 4. Security & Data Protection
+**Zero-Cloud Architecture.** All processing—from Mahalanobis distance calculations to Raking—is executed 100% locally on the machine's RAM. No respondent data, metadata, or analytical structures are sent to external APIs or LLMs. This guarantees total compliance with GDPR, NDA agreements, and academic data ethics.
 
-### 📊 Statistical Engine (Stat Engine)
-- **Difference Tests:** Comparisons of independent groups (Independent t-test, Welch's t-test, Mann-Whitney U, ANOVA, Kruskal-Wallis) and repeated measures (Paired t-test, Wilcoxon).
-- **Relationship Analysis:** Correlation matrices (Pearson, Spearman) with automatic Bonferroni correction applied for multiple comparisons.
-- **Business Metrics:** Calculation of NPS (Net Promoter Score) and Top 2 Boxes / Bottom 2 Boxes (T2B / B2B).
-- **Indices:** Creation of aggregate index variables (means) alongside the automatic calculation of the Cronbach's Alpha reliability coefficient.
-- **Tracking:** Wave-to-Wave comparisons (e.g., Wave 1 vs Wave 2) evaluating shifts in Means, NPS, or T2B, complete with statistical significance testing.
+## 5. Performance & Limitations
+- **Memory Bound:** The tool relies on loading the full `.sav` file into RAM via `pandas`. It is incredibly fast for typical market/academic research but may hit hardware limits on exceptionally massive, multi-gigabyte datasets.
+- **Format Constraints:** Exports currently target standard MS Office formats and IBM SPSS.
 
-### 📤 Results Export
-- **SPSS Syntax (`.sps`):** Generation of ready-to-run code to seamlessly replicate analyses within SPSS.
-- **MS Excel (`.xlsx`):** Detailed output tables accompanied by data cleaning logs.
-- **MS PowerPoint (`.pptx`):** Automated slide deck creation featuring formatted result tables.
+## 6. Future Roadmap
+As an actively developed system, upcoming features include:
+- **Wave-Specific Filtering:** Allowing the Stat Engine to compute specific metrics (like a single NPS score) strictly for one defined survey wave without manual dataset splitting.
+- **Scale Reversal Algorithms:** Automatic detection of scale directionality to automatically reverse negative items before calculating indices.
+- **Multi-Response Support:** Expanding the engine to natively cross-tabulate and analyze multiple-choice (dichotomous sets) questions.
 
-## 🏗️ Operational Architectures (Global Modes)
-The program offers three distinct workflow architectures:
-1. **Syntax Only:** Acts as a rapid code generator for SPSS. It does not modify or save new data files.
-2. **Hybrid:** Python handles the heavy lifting of data cleaning and weighting, exporting a clean, finalized `.sav` file. Statistical analyses are generated as SPSS Syntax.
-3. **Full Automation (Combine):** Comprehensive end-to-end processing. Python prepares the data, executes all statistical tests internally, and exports final reports directly to Excel and PPTX.
-
-## 💻 Installation & Usage
-
-**Requirements:**
+## 🛠️ Requirements & Execution
 - Python 3.10+
-- Required libraries: `pandas`, `numpy`, `pyreadstat`, `scipy`, `openpyxl`, `python-pptx`
-
-```bash
-pip install pandas numpy pyreadstat scipy openpyxl python-pptx
-```
-
-**Execution:**
-Run the program via the system terminal or command prompt:
-```bash
-python main.py
-```
-
-## 🗺️ Roadmap & Future Enhancements
-The system is continuously evolving. Planned upgrades include:
-- **Wave-Specific Calculations:** Implementing the ability to filter and calculate specific metrics (like NPS or T2B) for a single, specific wave without needing to split the database.
-- **Automatic Scale Detection:** Algorithms to identify scale directionality (positive vs. negative) to automatically reverse items prior to index creation.
-- **Multi-Response Handling:** Expanding the statistical engine to process and analyze multiple-choice questions (dichotomous sets).
-- **GUI (Graphical User Interface):** Transitioning from a Command Line Interface (CLI) to a fully dedicated desktop application window.
-- **Advanced Trimming Configuration:** Adding the ability to manually set Weight Cap/Floor thresholds directly from the configuration menu.
+- Libraries: `pip install pandas numpy pyreadstat scipy openpyxl python-pptx`
+- Run: `python main.py`
 
 ---
 
-# [PL] Toddler - Zintegrowany System Analityczny
+# [PL] Toddler - Zintegrowany System Analityczny (v2.2)
 
-Toddler to profesjonalne narzędzie do automatyzacji procesów czyszczenia, ważenia oraz analizy statystycznej danych badawczych (ilościowych). Program został zaprojektowany z myślą o badaczach pracujących na plikach SPSS (`.sav`) oraz CSV, łącząc moc obliczeniową Pythona z możliwością generowania składni (Syntax) dla IBM SPSS Statistics.
+## 1. Cel projektu
+Kompleksowa aplikacja desktopowa (GUI) stworzona do automatyzacji całego procesu Data Processing w badaniach ilościowych. Toddler łączy w jednym oknie moduły do czyszczenia danych (QC), ważenia prób (Raking/IPF) oraz silnik statystyczny. Pracuje na plikach SPSS (`.sav`) i CSV, generując zautomatyzowane raporty oraz gotowy kod Syntax.
 
-## 🚀 Główne Funkcje
+## 2. Podejście do tworzenia (Vibe Coding)
+System jest rezultatem zastosowania metodologii "vibe codingu". Zamiast tracić czas na ręczne kodowanie zakładek i przycisków w bibliotece Tkinter, wykorzystałem AI do zbudowania architektury interfejsu. Moją rolą było zarządzanie wiedzą domenową: zaprojektowanie reguł statystycznych, określenie metodologii odrzucania braków danych, zdefiniowanie logiki ważenia oraz integracja testów istotności (np. poprawka Bonferroniego). Projekt dowodzi, że ekspert badawczy może za pomocą AI tworzyć potężne, dedykowane oprogramowanie analityczne.
 
-### 🛠 Przygotowanie Danych (Data Prep)
-**Czyszczenie (Cleaning):**
-- Usuwanie "speederów" (respondentów o nienaturalnie krótkim czasie wypełniania).
-- Wykrywanie "straight-linerów" (osób o podejrzanie niskiej wariancji odpowiedzi).
-- Usuwanie "long-strings" (powtarzalnych ciągów tych samych wartości w bateriach pytań).
-- Wykrywanie anomalii wielowymiarowych (Dystans Mahalanobisa).
-- Obsługa braków danych (odrzucanie obserwacji z brakami >15%).
+## 3. Kluczowe Funkcje
+- **Graficzny Interfejs (GUI):** Nowoczesne okno z zakładkami, które całkowicie zastąpiło starą konsolę (CLI). Wykorzystuje przewijane panele z checkboxami ułatwiające pracę z bazami liczącymi setki zmiennych.
+- **Elastyczne Progi Czyszczenia:** Możliwość swobodnego wpisywania limitów bezpośrednio w aplikacji (np. dozwolony procent braków danych, dokładny próg wariancji, sztywny limit sekund dla speederów).
+- **Wbudowany Edytor Wag (IPF):** Narzędzie samodzielnie sczytuje kategorie ze wskazanych zmiennych i generuje pola do wpisania proporcji docelowych. Umożliwia automatyczne zrekodowanie zmiennych ciągłych (np. wieku) na wpisane przedziały z poziomu interfejsu.
+- **Silnik Statystyczny:** Realizuje m.in. testy różnic, korelacje, wskaźniki NPS i T2B, tworzenie indeksów z Alfą Cronbacha oraz analizę trackingową między falami. Wylicza wszystkie zlecane zadania w jednym przebiegu.
+- **Inteligentny Eksport:** Zapisuje wynikową bazę `.sav`, generuje kod `.sps` dla SPSS-a, a na podstawie zleconych analiz tworzy raporty w formatach `.xlsx` oraz `.pptx`.
 
-**Ważenie (Weighting):**
-- Zaawansowany algorytm IPF (Raking) realizowany natywnie w środowisku Python.
-- Automatyczny trimming (przycinanie) wag ekstremalnych.
-- Rekodowanie zmiennych ciągłych (np. wiek) na przedziały na podstawie zdefiniowanych struktur wagowych.
+## 4. Bezpieczeństwo i ochrona danych
+**Pełna izolacja (Zero-Cloud).** Cały proces analityczny odbywa się w 100% na lokalnym komputerze użytkownika. Żadne surowe bazy danych czy struktury prób badawczych nie są wysyłane do zewnętrznych chmur ani modeli AI. Zapewnia to maksymalne bezpieczeństwo i zgodność z obostrzeniami RODO oraz tajemnicą biznesową (NDA).
 
-### 📊 Silnik Statystyczny (Stat Engine)
-- **Testy Różnic:** Porównania grup niezależnych (t-Student, ANOVA, testy nieparametryczne) oraz pomiarów powtarzanych.
-- **Analiza Związków:** Macierze korelacji (Pearson, Spearman) z automatyczną korektą Bonferroniego dla testów wielokrotnych.
-- **Wskaźniki Biznesowe:** Obliczanie NPS (Net Promoter Score) oraz Top 2 Boxes / Bottom 2 Boxes (T2B / B2B).
-- **Indeksy:** Tworzenie indeksów (średnie) wraz z automatycznym wyliczaniem współczynnika rzetelności Alfa Cronbacha.
-- **Tracking:** Porównywanie fal badania (np. Fala 1 vs Fala 2) pod kątem zmian w średnich, NPS lub T2B wraz z testami istotności statystycznej.
+## 5. Wydajność i ograniczenia
+- **Zależność od RAM:** Aplikacja przechowuje przetwarzaną bazę w pamięci operacyjnej komputera. Działa optymalnie i błyskawicznie dla standardowych prób ankietowych, lecz przy olbrzymich plikach (dziesiątki milionów komórek) może obciążyć słabsze maszyny.
 
-### 📤 Eksport Wyników
-- **SPSS Syntax (`.sps`):** Generowanie gotowego kodu do natychmiastowego odtworzenia analiz w programie SPSS.
-- **MS Excel (`.xlsx`):** Szczegółowe tabele wynikowe wraz z logami z procesu czyszczenia danych.
-- **MS PowerPoint (`.pptx`):** Automatyczne tworzenie slajdów prezentacyjnych ze sformatowanymi tabelami wyników.
+## 6. Perspektywy rozwoju
+Toddler ma otwartą, modułową architekturę. Najbliższe plany rozwoju to m.in.:
+- **Filtrowanie wewnątrz silnika:** Pozwoli na zlecanie obliczeń (np. NPS) wyłącznie dla wybranej grupy czy fali, bez konieczności uprzedniego dzielenia pliku.
+- **Automatyczne odwracanie skal:** Wdrożenie algorytmu detekcji kierunku pytań w bateriach w celu bezbłędnego budowania indeksów.
+- **Obsługa pytań wielokrotnego wyboru (Multi-Response):** Rozbudowa parsera statystycznego o natywną obsługę zestawów dychotomicznych.
 
-## 🏗️ Tryby Pracy (Global Modes)
-Program oferuje trzy dedykowane architektury pracy:
-1. **Tylko Syntax:** Program służy jako szybki generator kodu dla SPSS. Nie modyfikuje źródłowych plików danych.
-2. **Hybryda:** Python wykonuje czyszczenie i ważenie, po czym zapisuje nową bazę `.sav`. Analizy statystyczne są generowane w formie gotowego Syntaxu.
-3. **Pełen Kombajn (Combine):** Kompleksowa automatyzacja. Python przygotowuje dane, wykonuje wszelkie analizy statystyczne i eksportuje raporty końcowe bezpośrednio do programów Excel i PPTX.
-
-## 💻 Instalacja i Uruchomienie
-
-**Wymagania:**
+## 🛠️ Wymagania i Uruchomienie
 - Python 3.10+
-- Biblioteki: `pandas`, `numpy`, `pyreadstat`, `scipy`, `openpyxl`, `python-pptx`
-
-```bash
-pip install pandas numpy pyreadstat scipy openpyxl python-pptx
-```
-
-**Uruchomienie:**
-Uruchom skrypt z poziomu terminala / wiersza poleceń:
-```bash
-python main.py
-```
-
-## 🗺️ Mapa Drogowa (To-Do)
-System jest w ciągłym rozwoju. Planowane usprawnienia obejmują:
-- **Wave-Specific Calculations:** Implementacja możliwości filtrowania i liczenia wskaźników (np. NPS lub T2B) dedykowanych tylko dla konkretnej fali, bez konieczności dzielenia plików bazy danych.
-- **Automatyczne Wykrywanie Skal:** Algorytm rozpoznający kierunek skal (pozytywne vs negatywne) w celu automatycznego odwracania wartości przed tworzeniem indeksów.
-- **Obsługa Multi-Response:** Rozbudowa silnika statystycznego o zaawansowaną analizę pytań wielokrotnego wyboru (zestawy dychotomiczne).
-- **GUI (Graficzny Interfejs Użytkownika):** Przejście z interfejsu konsolowego (CLI) na dedykowane okno aplikacji typu desktop.
-- **Zaawansowany Trimming:** Dodanie opcji ręcznego sterowania progami Cap/Floor dla wag bezpośrednio z poziomu pliku konfiguracyjnego.
+- Biblioteki: `pip install pandas numpy pyreadstat scipy openpyxl python-pptx`
+- Uruchomienie: `python main.py`
