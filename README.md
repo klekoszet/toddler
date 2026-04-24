@@ -12,7 +12,8 @@ This comprehensive system is the culmination of the "vibe coding" methodology. W
 - **Inline Weighting Editor:** An integrated IPF module that dynamically generates input fields for weighting targets based on the selected variables' unique categories. Automatically recodes continuous variables (e.g., exact age) into brackets based on user-defined ranges before weighting.
 - **Advanced Stat Engine:** Executes difference tests (ANOVA, t-tests), correlations, business metrics (NPS, T2B/B2B), creates indices with Cronbach's Alpha, and runs wave-to-wave tracking analyses.
 - **Smart Exporters:** Generates ready-to-run SPSS Syntax (`.sps`), detailed Excel tables (`.xlsx`), and automated PowerPoint presentations (`.pptx`) based strictly on the queued analyses.
-
+- **Smart Test Selection:** The engine automatically verifies underlying statistical assumptions (normality via Shapiro-Wilk/K-S tests, and variance homogeneity via Levene's test). If assumptions are violated, the system dynamically falls back to the appropriate non-parametric alternatives (e.g., Mann-Whitney U, Kruskal-Wallis, Wilcoxon, Spearman's rho) or applies Welch's correction.
+- 
 ## 4. Security & Data Protection
 **Zero-Cloud Architecture.** All processing—from Mahalanobis distance calculations to Raking—is executed 100% locally on the machine's RAM. No respondent data, metadata, or analytical structures are sent to external APIs or LLMs. This guarantees total compliance with GDPR, NDA agreements, and academic data ethics.
 
@@ -47,6 +48,7 @@ System jest rezultatem zastosowania metodologii "vibe codingu". Zamiast tracić 
 - **Wbudowany Edytor Wag (IPF):** Narzędzie samodzielnie sczytuje kategorie ze wskazanych zmiennych i generuje pola do wpisania proporcji docelowych. Umożliwia automatyczne zrekodowanie zmiennych ciągłych (np. wieku) na wpisane przedziały z poziomu interfejsu.
 - **Silnik Statystyczny:** Realizuje m.in. testy różnic, korelacje, wskaźniki NPS i T2B, tworzenie indeksów z Alfą Cronbacha oraz analizę trackingową między falami. Wylicza wszystkie zlecane zadania w jednym przebiegu.
 - **Inteligentny Eksport:** Zapisuje wynikową bazę `.sav`, generuje kod `.sps` dla SPSS-a, a na podstawie zleconych analiz tworzy raporty w formatach `.xlsx` oraz `.pptx`.
+- **Inteligentny Dobór Testów:** Silnik automatycznie weryfikuje założenia statystyczne (normalność rozkładu za pomocą testu Shapiro-Wilka/Kołmogorowa-Smirnowa oraz jednorodność wariancji testem Levene'a). W przypadku niespełnienia założeń, system samodzielnie przełącza się na odpowiednie alternatywy nieparametryczne (np. test Manna-Whitneya, Kruskala-Wallisa, Wilcoxona, rho Spearmana) lub stosuje poprawkę Welcha.
 
 ## 4. Bezpieczeństwo i ochrona danych
 **Pełna izolacja (Zero-Cloud).** Cały proces analityczny odbywa się w 100% na lokalnym komputerze użytkownika. Żadne surowe bazy danych czy struktury prób badawczych nie są wysyłane do zewnętrznych chmur ani modeli AI. Zapewnia to maksymalne bezpieczeństwo i zgodność z obostrzeniami RODO oraz tajemnicą biznesową (NDA).
